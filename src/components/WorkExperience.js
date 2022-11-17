@@ -4,15 +4,20 @@ import uniqid from 'uniqid';
 class WorkExperience extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { work: [1], id: uniqid() };
+    this.state = { work: [uniqid()] };
     this.addWork = this.addWork.bind(this);
   }
 
   addWork(e) {
     e.preventDefault();
     let temp = [...this.state.work];
-    temp.push(1);
+    temp.push(uniqid());
     this.setState({ work: temp });
+  }
+
+  removeWork(value) {
+    let newArray = this.state.work.filter((id) => id !== value);
+    this.setState({ work: newArray });
   }
 
   render() {
@@ -21,13 +26,15 @@ class WorkExperience extends React.Component {
         <div>
           {this.state.work.map((index) => {
             return (
-              <div key={uniqid()}>
+              <div key={index}>
                 <input type="text" />
                 <label>Ending Year </label>
                 <input typeof="date" id="startingYear" />
                 <label>Ending Year </label>
                 <input typeof="date" id="endingYear" />
-                <button>Delete me</button>
+                <button onClick={() => this.removeWork(index)}>
+                  Delete me
+                </button>
               </div>
             );
           })}

@@ -4,15 +4,20 @@ import uniqid from 'uniqid';
 class Skills extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { skill: [1], id: uniqid() };
+    this.state = { skill: [uniqid()] };
     this.addSkill = this.addSkill.bind(this);
   }
 
   addSkill(e) {
     e.preventDefault();
     let temp = [...this.state.skill];
-    temp.push(1);
+    temp.push(uniqid());
     this.setState({ skill: temp });
+  }
+
+  delete(value) {
+    let newArray = this.state.skill.filter((id) => id !== value);
+    this.setState({ skill: newArray });
   }
 
   render() {
@@ -21,9 +26,9 @@ class Skills extends React.Component {
         <div>
           {this.state.skill.map((element) => {
             return (
-              <div key={uniqid()}>
+              <div key={element}>
                 <input typeof="text" placeholder="coding" />
-                <button>Delete me</button>
+                <button onClick={() => this.delete(element)}>Delete me</button>
               </div>
             );
           })}

@@ -17,7 +17,7 @@ class Form extends React.Component {
   }
   render() {
     return (
-      <form>
+      <form onClick={this.clickHandle}>
         <Name />
         <Contact />
         <fieldset>
