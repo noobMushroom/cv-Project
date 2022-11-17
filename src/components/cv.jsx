@@ -1,13 +1,9 @@
 import React from 'react';
 
-const SkillList = (props) => {
-  const { tasks } = props;
+class Cv extends React.Component {
+  render() {
+    return <div>Your Form will be here</div>;
+  }
+}
 
-  return (
-    <ul>
-      {tasks.maps((task) => {
-        return <li>{task.text}</li>;
-      })}
-    </ul>
-  );
-};
+export default Cv;
