@@ -7,7 +7,6 @@ class Main extends React.Component {
     return (
       <div>
         <Form />
-        <Cv />
       </div>
     );
   }
