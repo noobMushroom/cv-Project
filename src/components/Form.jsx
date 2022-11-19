@@ -6,6 +6,7 @@ import Education from './formElements/Education';
 import WorkExperience from './formElements/WorkExperience';
 import Skills from './formElements/skill';
 import Cv from './cv';
+import uniqid from 'uniqid';
 
 class Form extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Form extends React.Component {
         address: 'candy land',
         website: 'candyland.com',
       },
-      skills: [],
+      skills: [{ skill: '', id: uniqid() }],
     };
   }
 
@@ -85,6 +86,37 @@ class Form extends React.Component {
       });
   };
 
+  handleSkillsChange = (e, id) => {
+    let comp = this.state.skills.find((element) => element.id === id);
+    comp.skill = e.target.value;
+    let temp = this.state.skills.filter((element) => element.id !== id);
+    this.setState((current) => {
+      return {
+        ...current,
+        skills: [...temp, { ...comp }],
+      };
+    });
+  };
+
+  addSkill = (e) => {
+    this.setState((current) => {
+      return {
+        ...current,
+        skills: [...current.skills, { skill: '', id: uniqid() }],
+      };
+    });
+  };
+
+  removeSkill = (id) => {
+    let newArray = this.state.skills.filter((element) => element.id !== id);
+    this.setState((current) => {
+      return {
+        ...current,
+        skills: [...newArray],
+      };
+    });
+  };
+
   clickHandle(e) {
     e.preventDefault();
   }
@@ -111,7 +143,12 @@ class Form extends React.Component {
           </fieldset>
           <fieldset>
             <legend>Skills</legend>
-            <Skills />
+            <Skills
+              {...this.state}
+              handleChange={this.handleSkillsChange}
+              addSkill={this.addSkill}
+              deleteSkill={this.removeSkill}
+            />
           </fieldset>
           <button typeof="submit">Generate Cv</button>
         </form>
