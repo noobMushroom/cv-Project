@@ -9,10 +9,10 @@ class Skills extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          {this.props.skills.map((element) => {
-            return (
-              <div key={element.id}>
+        {this.props.skills.map((element) => {
+          return (
+            <div className="skillsContainer" key={element.id}>
+              <div className="skillInput">
                 <input
                   onChange={(event) =>
                     this.props.handleChange(event, element.id)
@@ -20,13 +20,15 @@ class Skills extends React.Component {
                   typeof="text"
                   placeholder="coding"
                 />
-                <button onClick={() => this.props.deleteSkill(element.id)}>
-                  Delete me
+              </div>
+              <div className="deleteBtn">
+                <button onClick={(e) => this.props.deleteSkill(e, element.id)}>
+                  DELETE
                 </button>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
         <div className="addBtnContainer">
           <button id="AddSkill" onClick={this.props.addSkill}>
             Add

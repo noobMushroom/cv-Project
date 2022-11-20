@@ -1,0 +1,34 @@
+.bio {
+  @include fieldset;
+  &__legend {
+    @include legend;
+  }
+}
+
+.contact {
+  @include fieldset;
+  &__legend {
+    @include legend;
+  }
+}
+
+.work {
+  @include fieldset;
+  &__legend {
+    @include legend;
+  }
+}
+
+.education {
+  @include fieldset;
+  &__legend {
+    @include legend;
+  }
+}
+
+.skills {
+  @include fieldset;
+  &__legend {
+    @include legend;
+  }
+}

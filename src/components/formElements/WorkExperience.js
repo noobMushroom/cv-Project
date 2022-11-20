@@ -8,47 +8,57 @@ class WorkExperience extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          {this.props.work.map((index) => {
-            return (
-              <div key={index.id}>
+        {this.props.work.map((index) => {
+          return (
+            <div className="workContainer" key={index.id}>
+              <div className="title">
                 <input
                   onChange={(event) => this.props.handleChange(event, index.id)}
                   id="title"
                   type="text"
-                  placeholder="developer"
+                  placeholder="job title"
                 />
+              </div>
+              <div className="company">
                 <input
                   onChange={(event) => this.props.handleChange(event, index.id)}
                   id="company"
                   type="text"
-                  placeholder="google"
+                  placeholder="company name"
                 />
+              </div>
+              <div className="location">
                 <input
                   onChange={(event) => this.props.handleChange(event, index.id)}
                   id="location"
                   type="text"
-                  placeholder="candyland"
+                  placeholder="location"
                 />
-                <label>Ending Year </label>
+              </div>
+              <div className="startingYear">
+                <label className="startingYear__label">Starting Year : </label>
                 <input
                   onChange={(event) => this.props.handleChange(event, index.id)}
                   type="date"
                   id="startingYear"
                 />
-                <label>Ending Year </label>
+              </div>
+              <div className="endingYear">
+                <label className="endingYear__label">Ending Year : </label>
                 <input
                   onChange={(event) => this.props.handleChange(event, index.id)}
                   type="date"
                   id="endingYear"
                 />
-                <button onClick={() => this.props.removeWork(index.id)}>
-                  Delete me
+              </div>
+              <div className="deleteWorkBtn">
+                <button onClick={(e) => this.props.removeWork(e, index.id)}>
+                  DELETE
                 </button>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
         <div className="addBtnContainer">
           <button id="addWorkd" onClick={this.props.addWork}>
             Add

@@ -1,0 +1,15 @@
+.skillsContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  .skillInput {
+    margin-right: 1rem;
+    width: 85%;
+    input {
+      @include input;
+    }
+  }
+  .deleteBtn {
+    @include deleteBtn;
+  }
+}

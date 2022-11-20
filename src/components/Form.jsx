@@ -11,9 +11,9 @@ import uniqid from 'uniqid';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.clickHandle = this.clickHandle.bind(this);
     this.state = {
       personalInfo: {
+        image: '',
         name: 'cool',
         lastName: 'person',
         description: 'I am very cool',
@@ -26,21 +26,24 @@ class Form extends React.Component {
       },
       skills: [],
       education: [],
-      work: [
-        {
-          title: 'developer',
-          company: 'google',
-          startingYear: 'something',
-          endingYear: 'something ending',
-          location: 'candy land',
-          id: uniqid(),
-        },
-      ],
+      work: [],
     };
   }
 
   // updating personal info
   handlePersonalInfo = (e) => {
+    e.preventDefault();
+    if (e.target.id === 'image') {
+      this.setState((current) => {
+        return {
+          ...current,
+          personalInfo: {
+            ...current.personalInfo,
+            image: URL.createObjectURL(e.target.files[0]),
+          },
+        };
+      });
+    }
     if (e.target.id === 'firstName')
       this.setState((current) => {
         return {
@@ -69,6 +72,7 @@ class Form extends React.Component {
 
   // handlining contact info
   handleContactInfo = (e) => {
+    e.preventDefault();
     if (e.target.id === 'phoneNumber')
       this.setState((current) => {
         return {
@@ -101,6 +105,7 @@ class Form extends React.Component {
 
   // handling change in skills
   handleSkillsChange = (e, id) => {
+    e.preventDefault();
     let comp = this.state.skills.find((element) => element.id === id);
     comp.skill = e.target.value;
     let temp = this.state.skills.filter((element) => element.id !== id);
@@ -113,7 +118,8 @@ class Form extends React.Component {
   };
 
   // adding skills in the array
-  addSkill = () => {
+  addSkill = (e) => {
+    e.preventDefault();
     this.setState((current) => {
       return {
         ...current,
@@ -122,7 +128,8 @@ class Form extends React.Component {
     });
   };
   // remove skills
-  removeSkill = (id) => {
+  removeSkill = (e, id) => {
+    e.preventDefault();
     let newArray = this.state.skills.filter((element) => element.id !== id);
     this.setState((current) => {
       return {
@@ -134,6 +141,7 @@ class Form extends React.Component {
 
   // handling eductaion divs
   handleEducation = (e, id) => {
+    e.preventDefault();
     let comp = this.state.education.find((element) => element.id === id);
     switch (e.target.id) {
       case 'course':
@@ -159,7 +167,8 @@ class Form extends React.Component {
     });
   };
 
-  addEducation = () => {
+  addEducation = (e) => {
+    e.preventDefault();
     this.setState((current) => {
       return {
         ...current,
@@ -177,7 +186,8 @@ class Form extends React.Component {
     });
   };
 
-  removeEducation = (id) => {
+  removeEducation = (e, id) => {
+    e.preventDefault();
     let newArray = this.state.education.filter((element) => element.id !== id);
     this.setState((current) => {
       return {
@@ -188,6 +198,7 @@ class Form extends React.Component {
   };
   // handling work
   handleWork = (e, id) => {
+    e.preventDefault();
     let comp = this.state.work.find((element) => element.id === id);
     switch (e.target.id) {
       case 'title':
@@ -216,7 +227,8 @@ class Form extends React.Component {
     });
   };
 
-  addWork = () => {
+  addWork = (e) => {
+    e.preventDefault();
     this.setState((current) => {
       return {
         ...current,
@@ -235,7 +247,8 @@ class Form extends React.Component {
     });
   };
 
-  removeWork = (id) => {
+  removeWork = (e, id) => {
+    e.preventDefault();
     let newArray = this.state.work.filter((element) => element.id !== id);
     this.setState((current) => {
       return {
@@ -245,24 +258,20 @@ class Form extends React.Component {
     });
   };
 
-  clickHandle(e) {
-    e.preventDefault();
-  }
-
   render() {
     return (
-      <div>
-        <form onClick={this.clickHandle}>
-          <fieldset>
-            <legend>Bio</legend>
+      <div className="container">
+        <form>
+          <fieldset className="bio">
+            <legend className="bio__legend">Bio</legend>
             <Name handleChange={this.handlePersonalInfo} />
           </fieldset>
-          <fieldset>
-            <legend>Contact</legend>
+          <fieldset className="contact">
+            <legend className="contact__legend">Contact</legend>
             <Contact handleChange={this.handleContactInfo} />
           </fieldset>
-          <fieldset>
-            <legend>Work Experience</legend>
+          <fieldset className="work">
+            <legend className="work__legend">Work Experience</legend>
             <WorkExperience
               {...this.state}
               handleChange={this.handleWork}
@@ -270,8 +279,8 @@ class Form extends React.Component {
               removeWork={this.removeWork}
             />
           </fieldset>
-          <fieldset>
-            <legend>Education Information</legend>
+          <fieldset className="education">
+            <legend className="education__legend">Education Information</legend>
             <Education
               {...this.state}
               handleChange={this.handleEducation}
@@ -279,8 +288,8 @@ class Form extends React.Component {
               removeEducation={this.removeEducation}
             />
           </fieldset>
-          <fieldset>
-            <legend>Skills</legend>
+          <fieldset className="skills">
+            <legend className="skills__legend">Skills</legend>
             <Skills
               {...this.state}
               handleChange={this.handleSkillsChange}
@@ -288,7 +297,7 @@ class Form extends React.Component {
               deleteSkill={this.removeSkill}
             />
           </fieldset>
-          <button typeof="submit">Generate Cv</button>
+          <button>Generate Cv</button>
         </form>
         <Cv {...this.state} />
       </div>

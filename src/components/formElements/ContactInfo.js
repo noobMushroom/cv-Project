@@ -6,7 +6,7 @@ class Contact extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="contactContainer">
         <input
           onChange={this.props.handleChange}
           id="phoneNumber"
@@ -17,7 +17,7 @@ class Contact extends React.Component {
           onChange={this.props.handleChange}
           id="email"
           type="email"
-          placeholder="abc@somehitng.com"
+          placeholder="abc@something.com"
         />
         <input
           onChange={this.props.handleChange}
@@ -29,7 +29,7 @@ class Contact extends React.Component {
           onChange={this.props.handleChange}
           id="website"
           type="url"
-          placeholder="somehting.com"
+          placeholder="www.something.com"
         />
       </div>
     );
