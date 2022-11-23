@@ -2,13 +2,13 @@ import React from 'react';
 
 const PersonalInfo = (props) => {
   return (
-    <div>
-      <div className="imageContainer">
-        <img src={props.image} alt="profile pic" />
+    <div className="personalInfo">
+      <div className="firstName">
+        <h1>{props.name}</h1>
       </div>
-      <div className="firstName">{props.name}</div>
-      <div className="lastName"> {props.lastName}</div>
-      <div className="description"> {props.description} </div>
+      <div className="lastName">
+        <h1>{props.lastName}</h1>
+      </div>
     </div>
   );
 };

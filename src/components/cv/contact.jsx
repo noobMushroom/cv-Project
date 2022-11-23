@@ -2,11 +2,12 @@ import React from 'react';
 
 const ContactInfoShow = (props) => {
   return (
-    <div>
-      <div>{props.contactNumber}</div>
-      <div>{props.email}</div>
-      <div>{props.address}</div>
-      <div>{props.website}</div>
+    <div className="contactDiv">
+      <h3>Contact</h3>
+      <div className='mobileNumber'>{props.contactNumber}</div>
+      <div className='emailDiv'>{props.email}</div>
+      <div className='addressDiv'>{props.address}</div>
+      <div className='websiteDiv'>{props.website}</div>
     </div>
   );
 };

@@ -7,6 +7,9 @@ import WorkExperience from './formElements/WorkExperience';
 import Skills from './formElements/skill';
 import Cv from './cv';
 import uniqid from 'uniqid';
+import jsPDF from 'jspdf';
+
+
 
 class Form extends React.Component {
   constructor(props) {
@@ -14,15 +17,15 @@ class Form extends React.Component {
     this.state = {
       personalInfo: {
         image: '',
-        name: 'cool',
-        lastName: 'person',
+        name: 'John',
+        lastName: 'Doe',
         description: 'I am very cool',
       },
       contact: {
-        contactNumber: 8998989,
+        contactNumber: 899898909,
         email: 'something@some.com',
-        address: 'candy land',
-        website: 'candyland.com',
+        address: 'tokyo',
+        website: 'john.com',
       },
       skills: [],
       education: [],
@@ -257,6 +260,15 @@ class Form extends React.Component {
       };
     });
   };
+//todo add print function
+  // print=()=>{
+  //   let doc = new jsPDF()
+  //   doc.html(document.querySelector('#cv',{
+  //     callback:function(doc){
+  //       doc.save('myCv.pdf')
+  //     }
+  //   }))
+  // }
 
   render() {
     return (
@@ -297,9 +309,11 @@ class Form extends React.Component {
               deleteSkill={this.removeSkill}
             />
           </fieldset>
-          <button>Generate Cv</button>
         </form>
         <Cv {...this.state} />
+        {/* <div className='printBtn'>
+          <button  onClick={this.print}  type="primary"className='btn'>Print Cv</button>
+        </div> */}
       </div>
     );
   }

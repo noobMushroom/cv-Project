@@ -2,14 +2,17 @@ import React from 'react';
 
 const EducationShow = (props) => {
   return (
-    <div>
+    <div className="educationDivContainer">
+          <h3>My Education</h3>
       {props.education.map((index) => {
         return (
-          <div key={index.id}>
-            <div>{index.course}</div>
-            <div>{index.college}</div>
-            <div>{index.startingYear}</div>
-            <div>{index.endingYear}</div>
+          <div className="educationDiv" key={index.id}>
+            <div className="degreeName">{index.course}</div>
+            <div className="collegeName">{index.college}</div>
+            <div className="dates">
+              <div className="date">{index.startingYear}</div>
+              <div className="date">{index.endingYear}</div>
+            </div>
           </div>
         );
       })}

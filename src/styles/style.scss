@@ -2,12 +2,14 @@
 @import './fieldsets';
 @import './education';
 @import './skills';
+@import './cvStyle';
+@import "./head";
+@import './footer';
 .container {
   background-color: $primary-color;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-
   .nameContainer {
     @include flex;
 
@@ -156,5 +158,20 @@
     background: $secondary-color;
     border: 2px solid $border-color;
     outline: none;
+  }
+}
+
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #cv * {
+    visibility: visible;
+  }
+  #cv {
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 }
