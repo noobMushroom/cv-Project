@@ -17,8 +17,8 @@ class Form extends React.Component {
     this.state = {
       personalInfo: {
         image: '',
-        name: 'John',
-        lastName: 'Doe',
+        name: 'Mark',
+        lastName: 'Something',
         description: 'I am very cool',
       },
       contact: {
