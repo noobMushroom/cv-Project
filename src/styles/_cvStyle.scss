@@ -1,8 +1,9 @@
 .cvWrapper {
-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   width: 48rem;
   align-self: center;
-  margin-top: 8rem;
+  margin-top: 2rem;
   margin-bottom: 3rem;
 
   display: flex;
@@ -10,7 +11,7 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
   font-family: Arial, Helvetica, sans-serif;
 
   .left_side {
-    background-color:#f5f5f4;
+    background-color: #f5f5f4;
     width: 36rem;
     border-right: 2px solid black;
     .personalInfo {
@@ -26,59 +27,75 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
         @extend .firstName;
       }
     }
-    .workDivContainer{
+    .workDivContainer {
       padding: 1rem;
       .workDiv {
-      .jobTitle {
-        font-size: 1.3em;
-        font-weight: 600;
-        margin-bottom: 0.4rem;
-      }
-
-      .companyName {
-        font-size: 1.2em;
-        font-weight: 400;
-        margin-bottom: 0.3rem;
-      }
-      .dates {
-        margin-top: 0.4rem;
         display: flex;
-        .date {
-          margin-right: 1rem;
+        flex-direction: row-reverse;
+        justify-content: start;
+        // border-bottom: 0.1px  #1c1917;
+        margin-bottom: 1rem;
+        .mainInfo {
+          .jobTitle {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+          }
+
+          .companyName {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+          }
+        }
+        .dates {
+          margin-top: 0.3rem;
+          width: 12rem;
+          display: flex;
+          .date {
+            margin-right: 0.5rem;
+            font-weight: 500;
+          }
         }
       }
-    }
     }
     .educationDivContainer {
       padding: 1rem;
       .educationDiv {
-        .degreeName {
-          font-size: 1.3em;
-          font-weight: 600;
-          margin-bottom: 0.4rem;
-        }
-        .collegeName {
-          font-size: 1.2em;
-          font-weight: 500;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: start;
+        margin-bottom: 1rem;
+        .mainInfo {
+          .degreeName {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+          }
+          .collegeName {
+            font-size: 1.2em;
+            font-weight: 500;
+          }
         }
         .dates {
-          margin-top: 0.4rem;
+          margin-top: 0.2rem;
           display: flex;
           .date {
-            margin-right: 1rem;
+            margin-right: 0.7rem;
+            font-weight: 500;
           }
         }
       }
     }
   }
   .right_side {
-      h3{
-        font-weight: 900;
-        font-size: 1.8em;
-        margin-bottom: 1rem;
-        border-bottom: 3px solid black;
-      }
-    color:rgb(241, 240, 240);
+    h3 {
+      font-weight: 900;
+      font-size: 1.8em;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid black;
+    }
+    color: rgb(241, 240, 240);
     width: 12rem;
     background-color: #164e63;
     display: flex;
@@ -87,11 +104,14 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
     .contactDiv {
       height: 8rem;
       margin-top: 2rem;
-      .mobileNumber{
+      .mobileNumber {
         font-size: 1em;
       }
-      .emailDiv, .mobileNumber, .addressDiv, .websiteDiv{
-        margin-bottom:0.4rem;
+      .emailDiv,
+      .mobileNumber,
+      .addressDiv,
+      .websiteDiv {
+        margin-bottom: 0.4rem;
       }
     }
     .skillDiv {
@@ -101,21 +121,25 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
       ul {
         li {
           margin-bottom: 0.3rem;
-          list-style:disc;
-        margin-left:1rem;
+          list-style: disc;
+          margin-left: 1rem;
         }
       }
-    align-self: start;
+      align-self: start;
     }
 
     .imageContainer {
+      position: relative;
       margin-top: 3rem;
-      width: 10rem;
-      height: 10rem;
+      width: 11rem;
+      height: 11rem;
+      overflow: hidden;
+      border-radius: 50%;
       img {
-        width: 10rem;
-        height: 10rem;
-        border-radius: 50%;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: -13%;
       }
     }
   }
@@ -123,4 +147,9 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
 .description {
   padding: 1rem;
   font-size: 1.1em;
+}
+
+.livePreview {
+  @extend .head;
+  margin-top: 2rem;
 }

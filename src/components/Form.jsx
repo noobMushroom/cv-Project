@@ -8,15 +8,14 @@ import Skills from './formElements/skill';
 import Cv from './cv';
 import uniqid from 'uniqid';
 import jsPDF from 'jspdf';
-
-
+import image from '../images/michael-dam-mEZ3PoFGs_k-unsplash (1).jpg';
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       personalInfo: {
-        image: '',
+        image: image,
         name: 'Mark',
         lastName: 'Something',
         description: 'I am very cool',
@@ -260,7 +259,7 @@ class Form extends React.Component {
       };
     });
   };
-//todo add print function
+  //todo add print function
   // print=()=>{
   //   let doc = new jsPDF()
   //   doc.html(document.querySelector('#cv',{
@@ -310,6 +309,7 @@ class Form extends React.Component {
             />
           </fieldset>
         </form>
+        <div className="livePreview">Live preview</div>
         <Cv {...this.state} />
         {/* <div className='printBtn'>
           <button  onClick={this.print}  type="primary"className='btn'>Print Cv</button>

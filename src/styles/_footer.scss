@@ -1,6 +1,20 @@
-.foot{
-    text-align: center;
-    background-color: $primary-color;
-    font-size: 1.2em;
-    color: #29AB87;
+.foot {
+  padding: 0.5rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: $primary-color;
+  font-size: 1.2em;
+  color: #29ab87;
+  .gitHub {
+    height: 2rem;
+    margin-right: 1rem;
+    a {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }
+

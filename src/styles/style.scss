@@ -3,7 +3,7 @@
 @import './education';
 @import './skills';
 @import './cvStyle';
-@import "./head";
+@import './head';
 @import './footer';
 .container {
   background-color: $primary-color;
@@ -80,8 +80,6 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 1rem;
-    // align-items: center;
-    // justify-content: center;
     .title {
       grid-column: 1/4;
       width: 100%;
@@ -161,17 +159,3 @@
   }
 }
 
-
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  #cv * {
-    visibility: visible;
-  }
-  #cv {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-}
